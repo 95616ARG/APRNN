@@ -1,0 +1,3 @@
+data/mnist_c/*
+artifact/eval_2/*
+*.pyc
