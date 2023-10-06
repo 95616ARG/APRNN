@@ -20,7 +20,6 @@ __all__ = [
     "ReLU",
     "Hardswish",
     "GELU",
-    "SiLU",
     "DecoupledReLU",
     "SymbolicDecoupledReLU",
     "ArgMax",
