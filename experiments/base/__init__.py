@@ -3,6 +3,7 @@ import copy
 import numpy as np
 import torch
 import sytorch as st
+import argparse
 
 def print_msg_box(msg, indent=1, width=None, title=None):
     """Print message-box with optional title."""
@@ -237,3 +238,41 @@ class Dataset(torch.utils.data.Dataset):
 
         finally:
             self.to(_device)
+
+class ParseMaskAction(argparse.Action):
+    def __init__(self, option_strings, dest, nargs=None, **kwargs):
+        if nargs is not None:
+            raise ValueError("nargs not allowed")
+        super().__init__(option_strings, dest, **kwargs)
+
+    def __call__(self, parser, namespace, values, option_string=None):
+        setattr(namespace, self.dest, self.parse(values))
+
+    @staticmethod
+    def parse(s):
+        if s == '-1' or s == None:
+            return None
+        elif ':' in s:
+            start, end = tuple(map(int, s.split(':')))
+            return as_slice[start:end]
+        elif '.' in s:
+            return float(s)
+        elif '+' in s:
+            rows, step = tuple(map(int, s.split('+')))
+            rows = rows
+            return as_slice[rows:rows+step]
+        else:
+            return int(s)
+
+class ParseIndex(argparse.Action):
+    def __init__(self, option_strings, dest, nargs=None, **kwargs):
+        if nargs is not None:
+            raise ValueError("nargs not allowed")
+        super().__init__(option_strings, dest, **kwargs)
+
+    def __call__(self, parser, namespace, values, option_string=None):
+        setattr(namespace, self.dest, self.parse(values))
+
+    @staticmethod
+    def parse(s):
+        return as_slice[tuple(map(int, s.split(",")))]
