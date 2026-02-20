@@ -1,0 +1,23 @@
+[project]
+name = "aprnn"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dill>=0.4.1",
+    "gurobipy>=13.0.1",
+    "imageio>=2.37.2",
+    "jinja2>=3.1.6",
+    "numpy<2.0.0",
+    "onnx>=1.19.0",
+    "onnxruntime>=1.24.2",
+    "pandas>=2.3.3",
+    "pillow>=12.1.1",
+    "scipy>=1.17.0",
+    "tabulate>=0.9.0",
+    "torch>=2.10.0",
+    "torchvision>=0.25.0",
+    "tqdm>=4.67.3",
+    "z3-solver>=4.16.0.0",
+]
