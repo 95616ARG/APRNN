@@ -7,7 +7,6 @@ import torch.nn as nn
 
 from torch import Tensor
 
-from sytorch.pervasives import Interval
 from ..solver import *
 
 __all__ = [

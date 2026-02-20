@@ -11,7 +11,6 @@ __all__ = [
     "from_onnx",
     "from_nnet",
     "to_onnx",
-    "to_eran",
     'from_eran_pyt',
     'to_syrenn',
     'syrenn',
