@@ -229,6 +229,8 @@ class Dataset(torch.utils.data.Dataset):
            persistent_workers=False): ...
 
     def dataloader(self, **kwargs) -> torch.utils.data.DataLoader:
+        if kwargs.get('kwargs', 0) == 0:
+            kwargs['prefetch_factor'] = None
         return torch.utils.data.DataLoader(self, **kwargs)
 
     @overload
